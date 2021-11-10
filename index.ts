@@ -5,11 +5,11 @@ import * as awsnative from "@pulumi/aws-native";
 
 const run = async () => {
     const awsProgram = async () => {
-        const bucket = new aws.s3.Bucket("bucket");
+        const bucket = new aws.s3.Bucket("awsbucket");
     }
 
     const awsnativeProgram = async () => {
-        const bucket = new awsnative.s3.Bucket("bucket");
+        const bucket = new awsnative.s3.Bucket("awsnativebucket");
     }
 
     console.log("Initialising workspaces")
@@ -37,13 +37,11 @@ const run = async () => {
     await awsStack.refresh({ onOutput: console.info });
     await awsNativeStack.refresh({ onOutput: console.info });
 
-    console.time("aws-classic-update");
     await awsStack.up({ onOutput: console.info });
-    console.timeEnd("aws-classic-update");
-
-    console.time("aws-native-update");
     await awsNativeStack.up({ onOutput: console.info });
-    console.timeEnd("aws-native-update");
+
+    await awsStack.destroy({ onOutput: console.info });
+    await awsNativeStack.destroy({ onOutput: console.info });
 }
 
 run().catch(err => console.log(err));
