@@ -1,0 +1,16 @@
+{
+  "name": "awsvsaws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "./node_modules/ts-node/dist/bin.js index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pulumi/aws": "^4.27.1",
+    "@pulumi/aws-native": "^0.4.0",
+    "@pulumi/pulumi": "^3.17.1"
+  }
+}
